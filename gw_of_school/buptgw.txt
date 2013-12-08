@@ -1,0 +1,29 @@
+#!/bin/bash
+# author: Ernest Du 
+# please change name and pass to your own username and password.
+#网页版认证网关中提交的变量有时候会变，使用抓包工具看一下相应该一下就好了。modified by pumumu
+
+name=
+pass=
+
+function log_in
+{
+	curl --silent -d "$name=DDDDD&upass=2d10e1f0c03454c584ac9d49791ad77e123456781&R1=0&R2=1&para=00&0MKKey=123456" "http://gw.bupt.edu.cn/"
+	echo "You've logged in!"
+
+}
+
+function log_out
+{
+	curl --silent -d "username=$name&password=$pass&drop=0&type=1&n=1" "http://gw.bupt.edu.cn/cgi-bin/force_logout"
+	echo
+}
+
+case $1 in 
+-i)
+	log_in;;
+-o)
+	log_out;;
+*)
+	echo "use -i to login, -o to logout"
+esac
