@@ -60,13 +60,13 @@
 ;;(global-set-key [(f7)] 'visit-tags-table)         ; visit tags table  
 ;;(global-set-key [C-f7] 'sucha-generate-tag-table) ; generate tag table  
 ;;开个小窗查看光标处的 tag
-(global-set-key [(control .)] '(lambda () (interactive) (lev/find-tag t)))  
+;;(global-set-key [(control .)] '(lambda () (interactive) (lev/find-tag t)))  
 ;;只留下当前查看代码的窗口（关闭查看 tag 的小窗）
-(global-set-key [(control ,)] 'sucha-release-small-tag-window)  
+;;(global-set-key [(control ,)] 'sucha-release-small-tag-window)  
 ;;(global-set-key [(meta .)] 'lev/find-tag)  
-(global-set-key [(meta ,)] 'pop-tag-mark) 
+;;(global-set-key [(meta ,)] 'pop-tag-mark) 
  
-(global-set-key (kbd "C-M-,") 'find-tag)  
+;;(global-set-key (kbd "C-M-,") 'find-tag)  
 ;;Shift-Tab, C/C++ 和 lisp 等模式中补全函数名（一般情况下M-Tab被窗口管理器遮屏了）
 (define-key lisp-mode-shared-map [(shift tab)] 'complete-tag)  
 (add-hook 'c-mode-common-hook      ; both c and c++ mode  
@@ -189,7 +189,8 @@ nil 0 nil "_NET_WM_STATE" 32
 )
 
 ;; 启动emacs时窗口最大化
-(my-maximized)
+;; not work in console
+;;(my-maximized)
 
 ;;shutdown "~*" backup file
 ;;(setq auto-save-default nil)
