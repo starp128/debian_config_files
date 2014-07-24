@@ -38,8 +38,8 @@
 ;;sr-speedbar-max-width与sr-speedbar-width-x 设置宽度
 ;;(custom-set-variables '(sr-speedbar-right-side nil))
 (custom-set-variables '(sr-speedbar-skip-other-window-p t))
-(custom-set-variables '(sr-speedbar-width-x 10))
-(custom-set-variables '(sr-speedbar-max-width 20))
+(custom-set-variables '(sr-speedbar-width-x 8))
+(custom-set-variables '(sr-speedbar-max-width 8))
 ;; 绑定快捷键
 ;;(global-set-key (kbd "s-s") 'sr-speedbar-toggle)
 ;;(global-set-key (kbd "s-r") 'sr-speedbar-refresh-toggle)
@@ -161,7 +161,8 @@
 ;;show column on minibuffer
 (column-number-mode t)
 ;;hide menu bar
-(menu-bar-mode nil)
+;;(menu-bar-mode nil)
+(tool-bar-mode nil)
 ;;(setq default-tab-width 4)
 ;;do not show startup message
 (setq inhibit-startup-message t)
@@ -215,3 +216,6 @@ nil 0 nil "_NET_WM_STATE" 32
 
 (global-set-key [(meta p)] (lambda (&optional n) (interactive "p")
 (scroll-down (or n 1)))) 
+
+(show-paren-mode t)
+(which-function-mode t)
