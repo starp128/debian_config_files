@@ -1,0 +1,16 @@
+[retriever]
+type = SimpleIMAPSSLRetriever
+#type = SimplePOP3SSLRetriever
+server = imap.163.com
+port = 993
+username = starp128@163.com
+password = 97932384
+
+[destination]
+type = Maildir
+path = ~/mail/inbox/
+
+[options]
+verbose = 0
+delete = true
+message_log = ~/.getmail/getmail.log

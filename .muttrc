@@ -1,0 +1,34 @@
+set sendmail="/usr/bin/msmtp"
+set use_from=yes
+set from="hp <starp128@163.com>"
+set envelope_from=yes
+set sendmail_wait=0
+set editor="emacs -nw"
+set realname="myrealname"
+
+#set mailbox directory
+set folder = "~/mail"
+set mbox="~/mail/inbox"
+set mbox_type=maildir
+set spoolfile = "~/mail/inbox"
+
+set record="~/mail/sent"
+
+color index yellow default ~p                 # To me
+color index blue default ~P                # From me 
+color index brightyellow default ~N          # New
+color index brightgreen default "~N ~p"     # New to me
+color index brightcyan default ~T               # Tagged
+color index cyan default ~D              # Deleted
+color index black cyan ~F               # flaged
+
+# 排序方式
+#set sort=threads
+#set sort_aux=reverse-last-date
+#set ascii_chars=yes
+
+# 回信时是否包含原文
+set include
+
+# 回信引文前的符号
+set indent_str="> "
