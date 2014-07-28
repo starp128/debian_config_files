@@ -4,7 +4,7 @@ type = SimpleIMAPSSLRetriever
 server = imap.163.com
 port = 993
 username = starp128@163.com
-password = 97932384
+password = xxx
 
 [destination]
 type = Maildir
