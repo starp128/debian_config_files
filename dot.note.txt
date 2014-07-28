@@ -1,0 +1,148 @@
+#->
+select inpu methdo
+C+\ 
+or ibus-mode
+
+#->
+echo "test oh mutt"|mutt -s "test" xxx@xxx.com
+
+#->
+在Emacs 23之后还有个新特性叫shift选择（shift selection），故名思意就是用shift键来快速选择区域，通过使用shift键和C-n, C-p之类的组合来选择区域，和常规选择有些区别的是，在shift选择过程中使用了任何非shift组合都会取消当前选择区域。
+
+#->
+指定加载文件
+emacs -l your_file
+不加载任何文件
+emacs --no-init-file --no-site-file 
+
+#->
+find . -name "*.[chCHp]*" -print | etags -
+
+#->
+sudo misc/mke2fs -t ext4 -O inline_data ${DEV}
+sudo mount -t ext4 ${DEV} ${MNT}
+ext4那个tree
+git checkout -b dev origin/dev
+编译安装
+重启之后支持symlink w/ inline data
+
+#->
+git log --oneline --decorate --graph
+git config --global core.editor vi
+
+#->
+cd dir
+find . | cpio -o -H newc | gzip > /mnt/sda1/boot/initrd-2.6.15-prep.img 
+#-> 
+Setting free inodes count to 32745 (was 32746)
+
+#->
+Unable to access resume device (/dev/VolGroup00/LogVol01)
+mount: could not find filesystem ’/dev/root’
+setuproot: moving /dev failed: No such file or directory
+setuproot: error mounting /proc: No such file or directory
+setuproot: error mounting /sys: No such file or directory
+switchroot: mount failed: No such file or directory
+Kernel panic - not syncing: Attempted to kill init!
+修改这项是因为旧版的mkinitrd及其nash在内核没有CONFIG_SYSFS_DEPRECATED_V2参数时默认使用旧版sysfs路 径格式，从而在新内核下无法正确访问/sys内的硬盘信息节点。
+
+#->
+qemu-system-x86_64 -m 2048 -drive file=vm_rh5.img -vnc :13
+this work ok on my new installed rh5
+sudo qemu-system-x86_64 -m 2048 -enable-kvm -drive file=vm_rh5.img,if=virtio,cache=none -net nic -net user -vnc :13
+this don't work
+
+sudo qemu-system-x86_64 -m 2048 -enable-kvm -drive file=vm_rh5.img -hdb raw.img -vnc :13
+
+#->  Compile 2.6.28 on with morden gcc
+Apply the following changes to solve the problem :
+
+vi arch/x86/vdso/Makefile
+In arch/x86/vdso/Makefile :
+
+    replace "-m elf_x86_64" by "-m64" on the line starting with VDSO_LDFLAGS_vdso.lds
+    replace "-m elf_i386" by "-m32" on the line starting with VDSO_LDFLAGS_vdso32.lds 
+
+CONFIG_DEBUG_METUXES=y && make oldconfig
+
+#->
+vnc 10.232.97.12:5915
+
+#->
+把下面的两行添加到.bash_profile然后重新登录bash（译者注：用source .bash_profile即可）查看有什么变化，在这个例子中，bash命令历史记录中只能储存450条命令。
+
+#vi ~/.bash_profile 
+HISTSIZE=450
+HISTFLESIZE=450
+
+sudo qemu-system-x86_64 -m 2048 -enable-kvm -drive file=vm_rh7.img,if=virtio,cache=none -net nic -net user -vnc :12
+qemu-img create rh7.img 20G -f qcow2
+sudo qemu-system-x86_64 -m 1024 -cdrom rhel-server-7.0-x86_64-dvd.iso -drive file=rh7.img -boot d -vnc :12
+
+#->
+ Git中从远程的分支获取最新的版本到本地有这样2个命令：
+1. git fetch：相当于是从远程获取最新版本到本地，不会自动merge
+    
+git fetch origin master
+git log -p master..origin/master
+git merge origin/master
+
+    以上命令的含义：
+   首先从远程的origin的master主分支下载最新的版本到origin/master分支上
+   然后比较本地的master分支和origin/master分支的差别
+   最后进行合并
+   上述过程其实可以用以下更清晰的方式来进行：
+
+git fetch origin master:tmp 
+git diff tmp  
+git merge tmp
+
+    从远程获取最新的版本到本地的test分支上
+   之后再进行比较合并
+2. git pull：相当于是从远程获取最新版本并merge到本地
+
+git pull origin master
+
+上述命令其实相当于git fetch 和 git merge
+在实际使用中，git fetch更安全一些
+因为在merge前，我们可以查看更新情况，然后再决定是否合并
+结束
+
+emacs -nw (not use X)
+
+1.创建一个100M大小的映像文件
+dd if=/dev/zero of=test.img bs=10m count=100
+2.查找空闲的loop设备
+losetup -f
+3.将映像文件挂接到loop4中。
+losetup /dev/loop4 test.img
+4.对loop4进行分区
+fdisk /dev/loo4
+5.使用kpartx将分区装载到映像文件中
+kpartx -av test.img
+6.格式化分区
+mkfs.ext4 /dev/loo4p1
+这时，我们已经可以在/dev/mapper下看到loop4的映射，然后挂载之：
+mount /dev/mapper/loo4p1 /mnt
+
+#->
+umount /mnt
+kpartx -dv /dev/loop4
+losetup -d /dev/loop4
+
+find ./src -name '*.ec' -exec grep -i niuc {} /; -print
+
+ipmitool -I lanplus -H 10.xx.xx.xxx -U root -P root sol activate
+ipmitool -I lanplus -H 10.xxx.xxx.xxx -U root -P root power reset
+
+先打开 http://www.google.com/ncr
+然后打开 https://www.google.com/
+你想干啥就干啥吧！
+http://www.tmd123.com/
+https://github.com/greatfire/wiki
+
+virtural box
+emacs
+
+tree
+libncurse5-dev
