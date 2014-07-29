@@ -6,6 +6,7 @@ port = 993
 username = starp128@163.com
 password = xxx
 
+#should creat ~/mail/inbox/{cur,tmp,}
 [destination]
 type = Maildir
 path = ~/mail/inbox/
