@@ -1,17 +1,17 @@
 [retriever]
-type = SimpleIMAPSSLRetriever
-#type = SimplePOP3SSLRetriever
-server = imap.163.com
-port = 993
-username = starp128@163.com
+type = SimplePOP3SSLRetriever
+
+server = pop3.alibaba-inc.com
+port = 995
+username = xxx@alibaba-inc.com
 password = xxx
 
-#should creat ~/mail/inbox/{cur,tmp,}
+#should creat ~/mail/inbox/{cur,tmp,new}
 [destination]
 type = Maildir
 path = ~/mail/inbox/
 
 [options]
 verbose = 0
-delete = true
+delete = false
 message_log = ~/.getmail/getmail.log

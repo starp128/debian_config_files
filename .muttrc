@@ -1,20 +1,19 @@
 set sendmail="/usr/bin/msmtp"
 set use_from=yes
-set from="hp <starp128@163.com>"
+set from="xxx@alibaba-inc.com>"
 set envelope_from=yes
 set sendmail_wait=0
 set editor="emacs -nw"
-set realname="myrealname"
+set realname="xxx"
 
 #set mailbox directory
 set folder = "~/mail"
 set mbox="~/mail/inbox"
 set mbox_type=maildir
 set spoolfile = "~/mail/inbox"
-
 set record="~/mail/sent"
 
-color index yellow default ~p                 # To me
+color index yellow default ~p          # To me
 color index blue default ~P                # From me 
 color index brightyellow default ~N          # New
 color index brightgreen default "~N ~p"     # New to me
@@ -30,5 +29,12 @@ color index black cyan ~F               # flaged
 # 回信时是否包含原文
 set include
 
+#do not include header when re
+set header=no
+
 # 回信引文前的符号
 set indent_str="> "
+
+set pager_stop
+
+set arrow_cursor
