@@ -1,0 +1,18 @@
+[retriever]
+#type = SimpleIMAPSSLRetriever
+type = SimplePOP3SSLRetriever
+
+server = pop.gmail.com
+port = 995
+username = @gmail.com
+password = 
+
+#should creat ~/mail/xx/inbox/{cur,tmp,new}
+[destination]
+type = Maildir
+path = ~/mail//inbox/
+
+[options]
+verbose = 0
+delete = false
+message_log = ~/.getmail/getmail.log
