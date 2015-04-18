@@ -1,0 +1,6 @@
+[user]
+	name = starp128
+	email = starp128@163.com
+[alias]
+	lg = log --decorate --oneline --graph
+	st = status

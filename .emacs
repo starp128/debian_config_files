@@ -15,9 +15,9 @@
 (global-unset-key (kbd "C-z"))
 
 (require 'highlight-symbol)
-(global-set-key [f3] 'highlight-symbol-at-point)
-(global-set-key [f4] 'highlight-symbol-next)
-(global-set-key [f2] 'highlight-symbol-prev)
+(global-set-key [f6] 'highlight-symbol-at-point)
+(global-set-key [f7] 'highlight-symbol-next)
+(global-set-key [f5] 'highlight-symbol-prev)
 
 (defun terisk-scroll-up (&optional n)
 ""
@@ -106,15 +106,15 @@ navigation"
 (global-unset-key [C-z])
 
 (set-face-attribute  'mode-line
-                 nil
+                 nil 
                  :foreground "white"
-                 :background "black"
+                 :background "black" 
                  :box '(:line-width 1 :style released-button))
 
 (set-face-attribute  'mode-line-inactive
-                 nil
+                 nil 
                  :foreground "gray75"
-                 :background "gray25"
+                 :background "gray25" 
                  :box '(:line-width 1 :style released-button))
 
 (load (expand-file-name "~/quicklisp/slime-helper.el"))
