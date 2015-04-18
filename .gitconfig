@@ -1,6 +1,11 @@
 [user]
 	name = starp128
 	email = starp128@163.com
+[core]
+	editer = emacs
 [alias]
 	lg = log --decorate --oneline --graph
 	st = status
+	lg = log --graph --decorate=full
+	br = branch
+	b = branch

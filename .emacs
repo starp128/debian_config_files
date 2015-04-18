@@ -106,17 +106,17 @@ navigation"
 (global-unset-key [C-z])
 
 (set-face-attribute  'mode-line
-                 nil 
+                 nil
                  :foreground "white"
-                 :background "black" 
+                 :background "black"
                  :box '(:line-width 1 :style released-button))
 
 (set-face-attribute  'mode-line-inactive
-                 nil 
+                 nil
                  :foreground "gray75"
-                 :background "gray25" 
+                 :background "gray25"
                  :box '(:line-width 1 :style released-button))
 
-(load (expand-file-name "~/quicklisp/slime-helper.el"))
+;;(load (expand-file-name "~/quicklisp/slime-helper.el"))
 ;; Replace "sbcl" with the path to your implementation
-(setq inferior-lisp-program "sbcl")
+;;(setq inferior-lisp-program "sbcl")
