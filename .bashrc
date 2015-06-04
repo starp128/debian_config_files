@@ -1,13 +1,16 @@
 #PS1="\[\e[32m\][\u@\h \w]\n\#$\[\e[m\]"
-PS1="\[\e[32m\][\u@\h \[\e[32;1m\]\w\[\e[32m\]]\n\# $\[\e[m\]"
+PS1="\[\e[33m\][\u@\h \[\e[33;1m\]\w\[\e[33m\]]\n\# $\[\e[m\]"
+#30:黑 31:红 32:绿 33:黄 34:蓝色 35:紫色 36:深绿 37:白色
+#40:黑 41:深红 42:绿 43:黄色 44:蓝色 45:紫色 46:深绿 47:白色
 
 alias em="emacs -nw"
 alias cp="cp -v"
 alias mv="mv -v"
 alias ls="ls --color"
 alias ll="ls -l"
+alias la="ls -al"
 alias grep="grep --color=auto"
-alias rmbk="mv -v *~ \#*\# ~/.terisk_laji/"
+alias rmbk="mv -v .*\~ *\~ \#*\# ~/.terisk_laji/"
 
 #useful functions stops you from endless typing
 mcd() { mkdir -p "$1"; cd "$1";}
@@ -47,5 +50,5 @@ export DISPLAY=":0"
 export LANG="en_US.UTF-8"
 export LANGUAGE="en_US.UTF-8"
 
-xmodmap ~/.xmodmaprc
-echo "CAP now is CTRL"
+#xmodmap ~/.xmodmaprc
+#echo "CAP now is CTRL"
