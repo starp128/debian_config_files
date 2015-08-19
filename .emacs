@@ -1,4 +1,4 @@
-(add-to-list 'load-path "~/.emacs_config")
+(add-to-list 'load-path "~/debian_config_files/emacs.d/")
 
 (menu-bar-mode -1)
 (column-number-mode t)
