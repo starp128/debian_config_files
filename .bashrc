@@ -52,3 +52,8 @@ export LANGUAGE="en_US.UTF-8"
 
 #xmodmap ~/.xmodmaprc
 #echo "CAP now is CTRL"
+
+HISTSIZE=1000000
+HISTFILESIZE=1000000
+export HISTSIZE
+export HISTFILESIZE
