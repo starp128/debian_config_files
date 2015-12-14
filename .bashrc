@@ -9,7 +9,7 @@ alias mv="mv -v"
 alias ls="ls --color"
 alias ll="ls -l"
 alias la="ls -al"
-alias grep="grep --color=auto"
+alias grep="grep -n --color=auto"
 alias rmbk="mv -v .*\~ *\~ \#*\# ~/.terisk_laji/"
 
 #useful functions stops you from endless typing
@@ -57,3 +57,11 @@ HISTSIZE=1000000
 HISTFILESIZE=1000000
 export HISTSIZE
 export HISTFILESIZE
+
+#uncomment this to make set -x print more meaningful message
+#export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
+
+#another on from bashdb
+#PS4='(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]} - [${SHLVL},${BASH_SUBSHELL}, $?]
+#'
+

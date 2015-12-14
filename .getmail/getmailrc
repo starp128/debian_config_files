@@ -15,3 +15,5 @@ path = ~/mail/inbox/
 verbose = 0
 delete = false
 message_log = ~/.getmail/getmail.log
+
+#sina free mail need allow clients access on web ui before client configuration.
