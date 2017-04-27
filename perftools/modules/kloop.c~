@@ -1,0 +1,108 @@
+#include <linux/init.h>
+#include <linux/module.h>
+#include <asm/uaccess.h>
+#include <linux/time.h>
+#include <linux/blkdev.h>
+#include <linux/miscdevice.h>
+#include <linux/cdev.h>
+#include <linux/device.h>
+
+//#include <linux/printk.h> 
+
+MODULE_LICENSE("Dual BSD/GPL");
+
+
+static unsigned long long max = 10000;
+static struct timeval time;
+
+static int k_looper_open(struct inode * inode, struct file *filp)
+{
+	return try_module_get(THIS_MODULE)? 0 : -EINVAL;
+}
+
+static int k_looper_release(struct inode *inode, struct file *filp)
+{
+	module_put(THIS_MODULE);
+	return 0;
+}
+
+static ssize_t k_looper_write(struct file *file, const char __user *ubuf,
+			      size_t count, loff_t *ppos)
+{
+	char kbuf[100];
+	unsigned long long tmp;
+	ssize_t rc = 0;
+
+	rc = copy_from_user(kbuf, ubuf, count);
+	if (rc) {
+		printk(KERN_ERR "k_looper : err copy_from_user\n");
+		rc = -EFAULT;
+	} else {
+		rc = count;
+	}
+	tmp = simple_strtoull(kbuf, NULL, 0);
+	if (tmp > 0) {
+		max = tmp;
+		printk(KERN_ALERT "k_looper : set new max %llu \n", max);
+	}
+	return rc;
+}
+
+static ssize_t k_looper_read(struct file *file, char __user *buf,
+			     size_t count, loff_t *ppos)
+{
+	ssize_t rc = 0;
+	int i, j;
+
+	do_gettimeofday(&time);
+	printk(KERN_ERR "k_looper : read start time sec %llu usec %llu\n",
+	       (unsigned long long)time.tv_sec,
+	       (unsigned long long)time.tv_usec);
+
+
+	for(i = 0; i < max; i++)
+	{
+		j=j;
+	}
+	do_gettimeofday(&time);
+	printk(KERN_ERR "k_looper : read stop  time sec %llu usec %llu\n",
+	       (unsigned long long)time.tv_sec,
+	       (unsigned long long)time.tv_usec);
+
+	dump_stack();
+
+	return rc;
+}
+static struct file_operations k_looper_fops = {
+	.owner = THIS_MODULE,
+	.read = k_looper_read,
+	.write = k_looper_write,
+	.open = k_looper_open,
+	.release = k_looper_release,
+};
+
+static struct miscdevice k_looper_dev = {
+	.name = "k_looper_dev",
+	.minor = MISC_DYNAMIC_MINOR,
+	.fops = &k_looper_fops,
+};
+
+static int k_looper_init(void)
+{
+	int rc = -ENOMEM;
+	printk(KERN_ALERT "k_looper init\n");
+	rc = misc_register(&k_looper_dev);
+	if (rc) {
+		printk(KERN_ERR "k_looper : can not register driver");
+	}
+	return rc;
+}
+
+static void k_looper_exit(void)
+{
+	printk(KERN_ALERT "k_looper exti\n");
+	misc_deregister(&k_looper_dev);
+}
+
+module_init(k_looper_init);
+module_exit(k_looper_exit);

@@ -1,0 +1,9 @@
+pty.c
+gcc -g -o pty pty.c
+open a master pseudo-terminal using getpt
+read from stdin and write them to the master pseudo-terminal
+
+on another side 
+open the slave side of this pseudo-terminal just like a real terminal
+i.e. bash </dev/pts/5 ;;the name may defer which will get from pty.c
+now the bash is using /dev/pts/5 as stdin and whth its stdout not changed.

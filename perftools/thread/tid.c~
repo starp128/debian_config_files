@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <linux/unistd.h>
+#include <sys/syscall.h>
+#include <unistd.h>
+#include <pthread.h>
+
+pid_t gettid()
+{
+	return syscall( __NR_gettid );
+}
+void *mythread(void *data)
+{
+	for(;;) {
+		printf("My tid is %d and My pid is %d.\n", gettid(), getpid());
+		sleep(1);
+	}
+}
+int main()
+{
+	pthread_t tid[2];
+	pthread_create(&tid[0], NULL, mythread, NULL);
+	pthread_create(&tid[1], NULL, mythread, NULL);
+	pthread_join(tid[0], NULL);
+	pthread_join(tid[1], NULL);
+	printf("all thread is finished. my tid is %d mypid is %d\n", gettid(), getpid());
+	return 0;
+}

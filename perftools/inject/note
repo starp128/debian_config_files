@@ -1,0 +1,63 @@
+;; This buffer is for notes you don't want to save, and for Lisp evaluation.
+;; If you want to create a file, visit that file with C-x C-f,
+;; then enter the text in that file's own buffer.
+
+
+compile src.c
+  gcc src.c -o src
+view disasamble
+  objdump -d src
+
+0000000000400644 <get_number_line>:
+  400644:       55                      push   %rbp
+  400645:       48 89 e5                mov    %rsp,%rbp
+  ...
+
+get out binary code of the function
+  dd if=./src_z of=get_line_number.bin bs=1c skip=1896 count=416
+
+run 
+
+below is the map infomation after mmap and after munmap
+
+[@ ~]# cat /proc/13301/maps
+80000000-80001000 r-xp 00000000 5e:01 242636                             /root/dest
+80001000-80002000 r--p 00000000 5e:01 242636                             /root/dest
+80002000-80003000 rw-p 00001000 5e:01 242636                             /root/dest
+80003000-80024000 rw-p 00000000 00:00 0                                  [heap]
+3fffde2b000-3fffde2d000 rw-p 00000000 00:00 0
+3fffde2d000-3fffdfc4000 r-xp 00000000 5e:01 373255                       /usr/lib64/libc-2.17.so
+3fffdfc4000-3fffdfc8000 r--p 00196000 5e:01 373255                       /usr/lib64/libc-2.17.so
+3fffdfc8000-3fffdfca000 rw-p 0019a000 5e:01 373255                       /usr/lib64/libc-2.17.so
+3fffdfca000-3fffdfce000 rw-p 00000000 00:00 0
+3fffdfd4000-3fffdfd5000 rw-p 00000000 00:00 0
+3fffdfd5000-3fffdfd6000 rwxp 00000000 00:00 0
+3fffdfd6000-3fffdfd9000 rw-p 00000000 00:00 0
+3fffdfd9000-3fffdfdb000 r-xp 00000000 00:00 0                            [vdso]
+3fffdfdb000-3fffdffd000 r-xp 00000000 5e:01 373242                       /usr/lib64/ld-2.17.so
+3fffdffd000-3fffdffe000 r--p 00021000 5e:01 373242                       /usr/lib64/ld-2.17.so
+3fffdffe000-3fffdfff000 rw-p 00022000 5e:01 373242                       /usr/lib64/ld-2.17.so
+3fffdfff000-3fffe000000 rw-p 00000000 00:00 0
+3fffffdf000-40000000000 rw-p 00000000 00:00 0                            [stack]
+
+
+[root@ ~]# cat /proc/13301/maps
+80000000-80001000 r-xp 00000000 5e:01 242636                             /root/dest
+80001000-80002000 r--p 00000000 5e:01 242636                             /root/dest
+80002000-80003000 rw-p 00001000 5e:01 242636                             /root/dest
+80003000-80024000 rw-p 00000000 00:00 0                                  [heap]
+3fffde2b000-3fffde2d000 rw-p 00000000 00:00 0
+3fffde2d000-3fffdfc4000 r-xp 00000000 5e:01 373255                       /usr/lib64/libc-2.17.so
+3fffdfc4000-3fffdfc8000 r--p 00196000 5e:01 373255                       /usr/lib64/libc-2.17.so
+3fffdfc8000-3fffdfca000 rw-p 0019a000 5e:01 373255                       /usr/lib64/libc-2.17.so
+3fffdfca000-3fffdfce000 rw-p 00000000 00:00 0
+3fffdfd4000-3fffdfd5000 rw-p 00000000 00:00 0
+3fffdfd6000-3fffdfd9000 rw-p 00000000 00:00 0
+3fffdfd9000-3fffdfdb000 r-xp 00000000 00:00 0                            [vdso]
+3fffdfdb000-3fffdffd000 r-xp 00000000 5e:01 373242                       /usr/lib64/ld-2.17.so
+3fffdffd000-3fffdffe000 r--p 00021000 5e:01 373242                       /usr/lib64/ld-2.17.so
+3fffdffe000-3fffdfff000 rw-p 00022000 5e:01 373242                       /usr/lib64/ld-2.17.so
+3fffdfff000-3fffe000000 rw-p 00000000 00:00 0
+3fffffdf000-40000000000 rw-p 00000000 00:00 0                            [stack]
+
+
