@@ -1,0 +1,83 @@
+All library function do not response for the data. Provide them as parameter.
+
+Two symbol have same name. i.e int var; in some function static var;
+
+The perf tools is for .text. Can somethine get the hostspot of .data?
+
+
+
+library compile with -shared
+Relocation section '.rel.dyn' at offset 0x2d8 contains 7 entries:
+ Offset     Info    Type            Sym.Value  Sym. Name
+00000459  00000008 R_386_RELATIVE
+00001518  00000008 R_386_RELATIVE
+0000045e  00000302 R_386_PC32        00000000   puts
+0000047c  00000b02 R_386_PC32        00000450   library_funa
+000015e4  00000106 R_386_GLOB_DAT    00000000   __gmon_start__
+000015e8  00000206 R_386_GLOB_DAT    00000000   _Jv_RegisterClasses
+000015ec  00000406 R_386_GLOB_DAT    00000000   __cxa_finalize
+
+Relocation section '.rel.plt' at offset 0x310 contains 2 entries:
+ Offset     Info    Type            Sym.Value  Sym. Name
+000015fc  00000107 R_386_JUMP_SLOT   00000000   __gmon_start__
+00001600  00000407 R_386_JUMP_SLOT   00000000   __cxa_finalize
+
+
+library compiled with -shared -fPIC
+We can see:
+  the library_funa and puts are put in to .rel.plt which will use lazy binding
+We can have a simple test to see the .rel.dyn is reloced just after the lib is loaded.
+Relocation section '.rel.dyn' at offset 0x2d8 contains 4 entries:
+ Offset     Info    Type            Sym.Value  Sym. Name
+00001558  00000008 R_386_RELATIVE
+0000161c  00000106 R_386_GLOB_DAT    00000000   __gmon_start__
+00001620  00000206 R_386_GLOB_DAT    00000000   _Jv_RegisterClasses
+00001624  00000406 R_386_GLOB_DAT    00000000   __cxa_finalize
+
+Relocation section '.rel.plt' at offset 0x2f8 contains 4 entries:
+ Offset     Info    Type            Sym.Value  Sym. Name
+00001634  00000107 R_386_JUMP_SLOT   00000000   __gmon_start__
+00001638  00000307 R_386_JUMP_SLOT   00000000   puts
+0000163c  00000b07 R_386_JUMP_SLOT   00000470   library_funa
+00001640  00000407 R_386_JUMP_SLOT   00000000   __cxa_finalize
+
+
+b main
+see that. the .rel.dyn is already relocated before main
+(gdb) disass/rm library_func
+Dump of assembler code for function library_func:
+13      {
+   0xb7ff9482 <+0>:      55     push   %ebp
+   0xb7ff9483 <+1>:      89 e5  mov    %esp,%ebp
+   0xb7ff9485 <+3>:      83 ec 18       sub    $0x18,%esp
+
+14              return library_funb(++argument);
+   0xb7ff9488 <+6>:      83 45 08 01    addl   $0x1,0x8(%ebp)
+   0xb7ff948c <+10>:     8b 45 08       mov    0x8(%ebp),%eax
+   0xb7ff948f <+13>:     89 04 24       mov    %eax,(%esp)
+   0xb7ff9492 <+16>:     e8 d4 ff ff ff call   0xb7ff946b <library_funb>
+
+15      }
+   0xb7ff9497 <+21>:     c9     leave
+   0xb7ff9498 <+22>:     c3     ret
+
+End of assembler dump.
+(gdb) disass/rm library_funb
+Dump of assembler code for function library_funb:
+9       {
+   0xb7ff946b <+0>:      55     push   %ebp
+   0xb7ff946c <+1>:      89 e5  mov    %esp,%ebp
+   0xb7ff946e <+3>:      83 ec 18       sub    $0x18,%esp
+
+10              return library_funa(++b);
+   0xb7ff9471 <+6>:      83 45 08 01    addl   $0x1,0x8(%ebp)
+   0xb7ff9475 <+10>:     8b 45 08       mov    0x8(%ebp),%eax
+   0xb7ff9478 <+13>:     89 04 24       mov    %eax,(%esp)
+   0xb7ff947b <+16>:     e8 d0 ff ff ff call   0xb7ff9450 <library_funa>
+
+11      }
+   0xb7ff9480 <+21>:     c9     leave
+   0xb7ff9481 <+22>:     c3     ret
+
+End of assembler dump.
+(gdb)
