@@ -11,6 +11,7 @@ int main(int argc, char** argv)
 	unsigned int ch;
 	char *filename;
 	int offset;
+	char *endptr;
 
 	if (argc != 3) {
 		printf("%s filename offset\n");
@@ -18,11 +19,12 @@ int main(int argc, char** argv)
 	}
 
 	filename = argv[1];
-	offset = atoi(argv[2]);
+	offset = strtoul(argv[2], &endptr, 0);
 
-        fd = open(argv[1], O_RDONLY);
+        fd = open(filename, O_RDONLY);
         if (fd == -1) {
 		perror("open error\n");
+		return -1;
         }
 
         ret = pread(fd, &ch, 4, offset);

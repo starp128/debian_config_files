@@ -10,7 +10,7 @@ int main(int argc, char** argv)
 	int fd, ret;
 	unsigned long ch;
 	char *filename;
-	int offset;
+	unsigned long offset;
 	char *endptr;
 	
 	if (argc != 4) {
@@ -19,7 +19,7 @@ int main(int argc, char** argv)
 	}
 
 	filename = argv[1];
-	offset = atoi(argv[2]);
+	offset = strtoul(argv[2], &endptr, 0);
 	ch = strtoul(argv[3], &endptr, 0);
 
         fd = open(filename, O_RDWR, 0777);
