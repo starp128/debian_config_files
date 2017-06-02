@@ -5,12 +5,16 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
+#define IOLEN 1
+
+char *filename;
+int offset;
+unsigned int ch;
+
 int main(int argc, char** argv)
 {
 	int fd, ret;
-	char ch;
-	char *filename;
-	int offset;
+	char *endptr;
 
 	if (argc != 3) {
 		printf("%s filename offset\n");
@@ -18,15 +22,16 @@ int main(int argc, char** argv)
 	}
 
 	filename = argv[1];
-	offset = atoi(argv[2]);
+	offset = strtoul(argv[2], &endptr, 0);
 
-        fd = open(argv[1], O_RDONLY);
+        fd = open(filename, O_RDONLY);
         if (fd == -1) {
 		perror("open error\n");
+		return -1;
         }
 
-        ret = pread(fd, &ch, 1, offset);
-	if (ret != 1) {
+        ret = pread(fd, &ch, IOLEN, offset);
+	if (ret != IOLEN) {
 		printf("read fialed\n");
 		close(fd);
 		return -1;

@@ -5,12 +5,15 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
+#define IOLEN 4
+
+char *filename;
+int offset;
+unsigned int ch;
+
 int main(int argc, char** argv)
 {
 	int fd, ret;
-	unsigned int ch;
-	char *filename;
-	int offset;
 	char *endptr;
 
 	if (argc != 3) {
@@ -27,8 +30,8 @@ int main(int argc, char** argv)
 		return -1;
         }
 
-        ret = pread(fd, &ch, 4, offset);
-	if (ret != 4) {
+        ret = pread(fd, &ch, IOLEN, offset);
+	if (ret != IOLEN) {
 		printf("read fialed\n");
 		close(fd);
 		return -1;

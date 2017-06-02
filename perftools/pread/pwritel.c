@@ -5,14 +5,17 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
+#define IOLEN 4
+
+unsigned long ch;
+char *filename;
+unsigned long offset;
+
 int main(int argc, char** argv)
 {
 	int fd, ret;
-	unsigned long ch;
-	char *filename;
-	unsigned long offset;
 	char *endptr;
-	
+
 	if (argc != 4) {
 		printf("%s filename offset char\n");
 		return -1;
@@ -28,8 +31,8 @@ int main(int argc, char** argv)
 		return -1;
         }
 
-        ret = pwrite(fd, &ch, 4, offset);
-	if (ret != 4) {
+        ret = pwrite(fd, &ch, IOLEN, offset);
+	if (ret != IOLEN) {
 		printf("write fialed\n");
 		close(fd);
 		return -1;
