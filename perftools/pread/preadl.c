@@ -10,7 +10,7 @@
 
 char *filename;
 int offset;
-unsigned int ch;
+unsigned int ch = 0;
 
 int main(int argc, char** argv)
 {
