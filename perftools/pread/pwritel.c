@@ -8,9 +8,9 @@
 
 #define IOLEN 4
 
-unsigned long ch;
 char *filename;
-unsigned long offset;
+int offset;
+unsigned int ch = 0;
 
 int main(int argc, char** argv)
 {

@@ -27,7 +27,7 @@ int main(int argc, char** argv)
 
         fd = open(filename, O_RDONLY);
         if (fd == -1) {
-		perror("open error\n");
+		printf("open error\n");
 		return -1;
         }
 
