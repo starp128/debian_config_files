@@ -3,6 +3,9 @@
 [alias]
 	lg = log --decorate --oneline --graph
 	logd = log --decorate
+	logdo = log --decorate --oneline
+	logdog = log --decorate --oneline --graph
+	logdogb = log --decorate --oneline --graph --boundary
 	st = status
 	br = branch
 	b = branch
