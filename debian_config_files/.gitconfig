@@ -1,5 +1,5 @@
 [core]
-	editer = emacs -nw
+	editor = emacs -nw
 [alias]
 	lg = log --decorate --oneline --graph
 	logd = log --decorate
