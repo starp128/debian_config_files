@@ -1,0 +1,8 @@
+#basic
+$0           表示整个当前行
+$1           每行第一个字段
+NF          字段数量变量
+NR          每行的记录号，多文件记录递增
+
+#print out from 7 column to end
+awk '{for(i=7;i<NF;i++) printf("%s ", $i)} {print ""}' file

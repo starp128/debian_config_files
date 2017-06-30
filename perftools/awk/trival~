@@ -1,0 +1,2 @@
+#print out from 7 column to end
+awk '{for(i=7;i<NF;i++) printf("%s ", $i)} {print ""}' file
