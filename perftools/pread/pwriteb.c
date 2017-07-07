@@ -8,7 +8,7 @@
 
 #define IOLEN 1
 
-unsigned long ch;
+unsigned char ch;
 char *filename;
 unsigned long offset;
 
