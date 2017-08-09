@@ -2,7 +2,7 @@
 	editor = emacs -nw
 [alias]
 	lg = log --decorate --oneline --graph
-	logd = log --decorate
+	logd = log --decorate --pretty=fuller
 	logdo = log --decorate --oneline
 	logdog = log --decorate --oneline --graph
 	logdogb = log --decorate --oneline --graph --boundary
