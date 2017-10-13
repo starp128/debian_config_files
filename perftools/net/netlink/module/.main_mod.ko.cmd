@@ -1,0 +1,1 @@
+cmd_/home/terry/debian_config_files/perftools/net/netlink/module/main_mod.ko := cp /home/terry/debian_config_files/perftools/net/netlink/module/main_mod.ko.unsigned /home/terry/debian_config_files/perftools/net/netlink/module/main_mod.ko
