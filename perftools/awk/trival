@@ -6,3 +6,6 @@ NR          每行的记录号，多文件记录递增
 
 #print out from 7 column to end
 awk '{for(i=7;i<NF;i++) printf("%s ", $i)} {print ""}' file
+
+#print 9 and 10 column and '/' between them
+awk '{print $9 "/" $10}' allo | less
