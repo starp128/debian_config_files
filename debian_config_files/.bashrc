@@ -65,3 +65,7 @@ export HISTFILESIZE
 #PS4='(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]} - [${SHLVL},${BASH_SUBSHELL}, $?]
 #'
 
+# ln -s /root/yours/ /b
+# alias tm="/b/bin/bin/tmux -f /b/.cnt/debian_config_files/.tmux.conf"
+# alias em="emacs -nw --load /b/.cnt/debian_config_files/.emacs"
+# alias note="emacs -nw --load /b/.cnt/debian_config_files/.emacs /b/ws/note"
