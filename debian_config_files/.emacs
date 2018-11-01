@@ -195,3 +195,6 @@ navigation"
 	  (lambda ()
 	    (define-key artist-mode-map (kbd "C-c C-a C-o") 'artist-ido-select-operation)
 	    (define-key artist-mode-map (kbd "C-c C-a C-c") 'artist-ido-select-settings)))
+
+
+(setq dired-listing-switches "-al --group-directories-first")
