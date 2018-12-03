@@ -61,13 +61,30 @@ export HISTFILESIZE
 #uncomment this to make set -x print more meaningful message
 #export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
 
-#another on from bashdb
+#another one from bashdb
 #PS4='(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]} - [${SHLVL},${BASH_SUBSHELL}, $?]
 #'
 
 
-# move this out to somewhere like /your/home, and source it. and enjoy
-# ln -s /bigdata/ /b
-# alias tm="/b/bin/bin/tmux -f /b/.cnt/debian_config_files/.tmux.conf"
-# alias em="emacs -nw --load /b/.cnt/debian_config_files/.emacs"
-# alias note="emacs -nw --load /b/.cnt/debian_config_files/.emacs /b/ws/note"
+# README
+# cp -r .cnt to /your/real/workspace/
+# cp /your/real/workspace/.cnt/debian_config_files/.bashrc /home/you. and source /hoem/you/.bashrc
+# ln -s /your/real/workspace /b
+
+# the config really does is share an user name but provide your custom configuration.
+# config file do not need to move out to you ~ dir.
+
+if [ -f /b ] ; then
+    alias tm="/b/bin/bin/tmux -f /b/.cnt/debian_config_files/.tmux.conf"
+    alias em="emacs -nw --load /b/.cnt/debian_config_files/.emacs"
+    alias note="emacs -nw --load /b/.cnt/debian_config_files/.emacs /b/ws/note"
+fi
+
+#bind '"\M-\C-f": shell-forward-word'
+#bind '"\M-\C-b": shell-backward-word'
+
+#bind '"\C-f":vi-fWord'
+#bind '"\C-b":vi-bWord'
+
+bind '"\ef": vi-fWord'
+bind '"\eb": vi-bWord'
