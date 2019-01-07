@@ -74,7 +74,7 @@ export HISTFILESIZE
 # the config really does is share an user name but provide your custom configuration.
 # config file do not need to move out to you ~ dir.
 
-if [ -f /b ] ; then
+if [ -h /b ] ; then
     alias tm="/b/bin/bin/tmux -f /b/.cnt/debian_config_files/.tmux.conf"
     alias em="emacs -nw --load /b/.cnt/debian_config_files/.emacs"
     alias note="emacs -nw --load /b/.cnt/debian_config_files/.emacs /b/ws/note"
