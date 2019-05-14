@@ -3,7 +3,6 @@ PS1="\[\e[33m\][\u@\h \[\e[33;1m\]\w\[\e[33m\]]\n\# $\[\e[m\]"
 #30:黑 31:红 32:绿 33:黄 34:蓝色 35:紫色 36:深绿 37:白色
 #40:黑 41:深红 42:绿 43:黄色 44:蓝色 45:紫色 46:深绿 47:白色
 
-alias em="emacs -nw"
 alias cp="cp -v"
 alias mv="mv -v"
 alias ls="ls --color"
@@ -75,7 +74,7 @@ export HISTFILESIZE
 # config file do not need to move out to you ~ dir.
 
 if [ -h /b ] ; then
-    alias tm="/b/bin/bin/tmux -f /b/.cnt/debian_config_files/.tmux.conf"
+    alias tm="tmux -f /b/.cnt/debian_config_files/.tmux.conf"
     alias em="emacs -nw --load /b/.cnt/debian_config_files/.emacs"
     alias note="emacs -nw --load /b/.cnt/debian_config_files/.emacs /b/ws/note"
 fi
