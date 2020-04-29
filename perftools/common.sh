@@ -26,7 +26,7 @@ echo_red()
     red_color="\033[31m"
     green_color="\033[32m"
     reset_color="\033[0m"
-    echo -e "${green_color}$1${reset_color}"
+    echo -e "${red_color}$1${reset_color}"
 }
 
 debug() {
