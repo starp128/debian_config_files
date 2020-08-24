@@ -74,6 +74,8 @@ export HISTFILESIZE
 # config file do not need to move out to you ~ dir.
 
 if [ -h /b ] ; then
+    # using private tmux. in order to share box with others
+    # alias tm="/b/bin/tmux -f /b/.cnt/debian_config_files/.tmux.conf -S /b/bin/sock"
     alias tm="tmux -f /b/.cnt/debian_config_files/.tmux.conf"
     alias em="emacs -nw --load /b/.cnt/debian_config_files/.emacs"
     alias note="emacs -nw --load /b/.cnt/debian_config_files/.emacs /b/ws/note"
