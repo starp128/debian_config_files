@@ -35,6 +35,10 @@ extract() {
      fi
 }
 
+gen_etags() {
+    bash -c 'find . -name "*.[ch]" | etags -'
+}
+
 export HISTTIMEFORMAT='%F %T '
 
 export LESS_TERMCAP_mb=$'\E[01;31m'
