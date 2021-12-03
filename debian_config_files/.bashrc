@@ -9,7 +9,7 @@ alias ls="ls --color"
 alias ll="ls -l"
 alias la="ls -al"
 alias grep="grep --color=auto"
-alias rmbk="mv -v .*\~ *\~ \#*\# ~/.terisk_laji/"
+alias rmbk="mv -v .*\~ *\~ \#*\# /b/.terisk_laji/"
 
 #useful functions stops you from endless typing
 mcd() { mkdir -p "$1"; cd "$1";}
