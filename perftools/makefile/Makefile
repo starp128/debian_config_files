@@ -20,7 +20,7 @@ foo = $(bar)
 bar = $(ugh)
 ugh = Huh?
 
-all:;echo $(foo)
+$(info $(foo))
 
 # Simply expanded variables
 # x := foo
@@ -43,6 +43,9 @@ $(info $(FOO))
 
 # special vars
 $(info default goal is $(.DEFAULT_GOAL))
+
+# 10.5.3 Automatic Variables
+# $@
 
 $(info ########### end variable #######)
 $(info)
@@ -116,6 +119,11 @@ $(info )
 # foreach
 dirs := a b c d
 files := $(foreach dir,$(dirs),$(wildcard $(dir)/*))
+
+########################################
+########## end function ################
+########################################
+
 
 ifneq ($(V),1)
 Q ?= @
