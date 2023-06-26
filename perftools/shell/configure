@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -eE
+
+trap 'echo hello' ERR
+
+function func() {
+    ls /root/  # run as non-root user
+}
+
+func
+
