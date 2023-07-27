@@ -198,3 +198,6 @@ navigation"
 
 
 (setq dired-listing-switches "-al --group-directories-first")
+
+(add-hook 'c-mode-hook 'hs-minor-mode)
+(add-hook 'c++-mode-hook 'hs-minor-mode)
