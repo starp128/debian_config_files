@@ -1,0 +1,31 @@
+
+13 $m4
+ifelse(aaa, aaa, haode, nogood)
+haode
+define(var, 123)
+
+var
+123
+ifelse(var ,123, good, ng)
+ng
+ifelse(`var', 123, good, ng)
+ng
+var 
+123
+ifelse(`var', `123', good, ng)
+ng
+var
+123
+ifelse(var, `123', good, ng)
+good
+123
+123
+^C
+[makefile/m4]
+14 $m4
+define(var, hello)
+
+var
+hello
+ifelse(var, hello, good, ng)
+good

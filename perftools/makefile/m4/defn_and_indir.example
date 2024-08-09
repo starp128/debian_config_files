@@ -1,0 +1,15 @@
+define(bbb, "hello")
+
+define(aaa, `bbb')
+
+bbb
+"hello"
+aaa
+"hello"
+defn(`aaa')
+bbb
+indir(`aaa')
+"hello"
+
+# defn提取 quoted definition of each name
+# indir会持续不断展开
