@@ -27,26 +27,29 @@ int main() {
 		exit(-1);
 	}
 	*/
-	if (luaL_dofile(L, "./ex2.lua")) {
+	if (luaL_loadfile(L, "./ex2.lua")) {
 		std::cout << "faied" << std::endl;
+	}
+
+	//3.运行Lua文件  
+	int bRet = lua_pcall(L,0,0,0);  
+	if(bRet)  
+	{  
+		std::cout<<"pcall error"<<std::endl;  
 	}
 
 	lua_getglobal(L, "aa");
 	int abc = lua_tonumber(L, -1);
 	
-// get global variable
+	// get global variable
 	lua_getglobal(L, "version");
 	const char *version = lua_tostring(L, -1);
 	std::cout << "version: " << version << std::endl;
 
-	version = lua_tostring(L, -2);
-	version = lua_tostring(L, 0);
-
-
 	
 	lua_pop(L, 1);
 
-// call global function
+	// call global function
 	lua_getglobal(L, "add");
 	int a = 100;
 	int b = 200;
