@@ -12,7 +12,7 @@ int main()
 	printf("%-8s\n", SHORT_STRING);
 
 	printf("%s\n", LONG_STRING);
-	printf("%8.8s\n", LONG_STRING);
+	printf("%8.4s\n", LONG_STRING);
 	/* with 8. 7 from LONG_STRING, left align */
 	printf("%-8.7s\n", LONG_STRING);
 

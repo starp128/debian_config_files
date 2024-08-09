@@ -201,3 +201,12 @@ navigation"
 
 (add-hook 'c-mode-hook 'hs-minor-mode)
 (add-hook 'c++-mode-hook 'hs-minor-mode)
+
+;; (setq indent-tabs-mode nil)
+;; (setq tab-width 4)
+
+;; (setq-default indent-tabs-mode nil)
+;; (setq-default tab-width 4)
+;; (setq indent-line-function 'insert-tab)
+
+;; M-x c-set-style. java style use 4 space tab
